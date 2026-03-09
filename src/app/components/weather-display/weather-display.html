@@ -1,0 +1,24 @@
+<section style="margin-top: 1.5rem;">
+  <ng-container *ngIf="vm$ | async as vm; else idle">
+    <ng-container *ngIf="vm; else idle">
+      <div style="border:1px solid #e2e8f0; border-radius:.5rem; padding:1rem;">
+        <h2 style="margin-top:0;">
+          {{ vm.city.name }}
+          <small *ngIf="vm.city.admin1">({{ vm.city.admin1 }})</small>
+          <small *ngIf="vm.city.country">- {{ vm.city.country }}</small>
+        </h2>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:.5rem;">
+          <div><strong>Temperature:</strong> {{ vm.weather.temperature }} °C</div>
+          <div><strong>Wind Speed:</strong> {{ vm.weather.windspeed }} km/h</div>
+          <div><strong>Weather Code:</strong> {{ vm.weather.weathercode }}</div>
+          <div><strong>Time:</strong> {{ vm.weather.time }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #idle>
+    <p style="color:#64748b;">Search a city to see the current weather.</p>
+  </ng-template>
+</section>
