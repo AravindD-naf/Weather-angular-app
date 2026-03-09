@@ -1,0 +1,18 @@
+<form (submit)="onSubmit($event)" style="display:flex; gap:.5rem; align-items:center;">
+  <input
+    type="text"
+    [(ngModel)]="cityName"
+    name="city"
+    placeholder="Type a city (e.g., Chennai)"
+    style="flex:1; padding:.5rem; border:1px solid #cbd5e1; border-radius:.25rem;"
+  />
+  <button
+    type="submit"
+    [disabled]="loading"
+    style="padding:.5rem 1rem; border:none; background:#2563eb; color:white; border-radius:.25rem; cursor:pointer;"
+  >
+    {{ loading ? 'Searching...' : 'Search' }}
+  </button>
+</form>
+
+<p *ngIf="errorMsg" style="color:#b91c1c; margin-top:.5rem;">{{ errorMsg }}</p>
